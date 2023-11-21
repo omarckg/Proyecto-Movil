@@ -1,4 +1,4 @@
-from config.bd import app, db, ma
+from config.db import app, db, ma
 
 class Bodega(db.Model):
     __tablename__ = 'Bodega'
@@ -12,6 +12,6 @@ class Bodega(db.Model):
 with app.app_context():
     db.create_all()
 
-class BodegaSchema(ma.Schema):
+class BodegasSchema(ma.Schema):
     class Meta:
         fields = ('id', 'nombre')

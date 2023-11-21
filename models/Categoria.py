@@ -1,4 +1,4 @@
-from config.bd import app, db, ma
+from config.db import app, db, ma
 
 class Categoria(db.Model):
     __tablename__ = 'Categoria'
