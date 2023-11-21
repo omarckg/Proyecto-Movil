@@ -4,16 +4,18 @@ class Vehiculo(db.Model):
     __tablename__ = 'Vehiculo'
 
     id  = db.Column(db.Integer, primary_key=True)
+    id_conductor = db.Column(db.Integer, db.ForeignKey('Conductor.id'))
     matricula = db.Column(db.String(6), unique=True)
-    conductor = db.Column(db.String(50))
+    
 
-    def __init__(self, matricula, conductor):
+    def __init__(self, id_conductor,matricula ):
+        self.id_conductor = id_conductor
         self.matricula = matricula
-        self.conductor = conductor
+        
 
 with app.app_context():
     db.create_all()
 
-class VehiculoSchema(ma.Schema):
+class VehiculosSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'matricula', 'conductor')
+        fields = ('id','id_conductor' ,'matricula' )

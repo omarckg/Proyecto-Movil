@@ -18,6 +18,6 @@ class Producto(db.Model):
 with app.app_context():
     db.create_all()
 
-class ProductoSchema(ma.Schema):
+class ProductosSchema(ma.Schema):
     class Meta:
         fields = ('id','id_categoria','nombre','fecha_consumo', 'peso')

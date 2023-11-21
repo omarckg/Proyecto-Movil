@@ -1,8 +1,5 @@
 from config.db import app, db, ma
-from flask_bcrypt import Bcrypt
 
-
-bcrypt = Bcrypt()
 
 class Usuario(db.Model):
     __tablename__ = 'User'
@@ -19,17 +16,10 @@ class Usuario(db.Model):
         self.nombre = nombre
         
         
-    def set_password(self, password):
-        # Genera el hash de la contraseña y la almacena en el campo password_hash
-        self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-
-    def check_password(self, password):
-        # Comprueba si la contraseña proporcionada coincide con el hash almacenado
-        return bcrypt.check_password_hash(self.password_hash, password)
-
+   
 with app.app_context():
     db.create_all()
 
-class UsuarioSchema(ma.Schema):
+class UsuariosSchema(ma.Schema):
     class Meta:
         fields = ('id','email', 'nombre')

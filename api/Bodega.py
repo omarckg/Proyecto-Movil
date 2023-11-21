@@ -19,7 +19,6 @@ def save():
     id = request.json['id']
     nombre = request.json['nombre']
     new_bodega = Bodega(
-        id,
         nombre,
     )
     db.session.add(new_bodega)
@@ -31,7 +30,7 @@ def save():
 @ruta_Bodega.route('/updateBodega', methods=['PUT'])
 def Update():
     id = request.json['id']
-    nombre = request.json['idviaje']
+    nombre = request.json['nombre']
     
     
     bodega= Bodega.query.get(id)

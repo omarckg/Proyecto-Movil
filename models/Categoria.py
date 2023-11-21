@@ -14,6 +14,6 @@ class Categoria(db.Model):
 with app.app_context():
     db.create_all()
 
-class CategoriaSchema(ma.Schema):
+class CategoriasSchema(ma.Schema):
     class Meta:
         fields = ('id','id_bodega','nombre')

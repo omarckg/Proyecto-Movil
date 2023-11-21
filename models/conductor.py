@@ -1,8 +1,8 @@
 from config.db import app, db, ma
-from flask_bcrypt import Bcrypt
 
 
-bcrypt = Bcrypt()
+
+
 
 class Conductor(db.Model):
     __tablename__ = 'Conductor'
@@ -20,6 +20,6 @@ class Conductor(db.Model):
 with app.app_context():
     db.create_all()
 
-class ConductorSchema(ma.Schema):
+class ConductoresSchema(ma.Schema):
     class Meta:
         fields = ('id','telefono', 'nombre')
