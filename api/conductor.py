@@ -16,7 +16,7 @@ def conductor():
 
 @ruta_Conductor.route('/saveConductor', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     telefono = request.json['telefono']
     nombre = request.json['nombre']
     new_conductor = Conductor(
@@ -51,8 +51,8 @@ def Update():
 @ruta_Conductor.route('/deleteconductor/<id>', methods=['DELETE'])
 def eliminar(id):
     conductor = Conductor.query.get(id)
-    db.session.delete(Conductor_schema)
+    db.session.delete(conductor)
     db.session.commit()
     return jsonify(
-        Conductor_schema.dump(Conductor_schema),
+        Conductor_schema.dump(conductor),
                    )

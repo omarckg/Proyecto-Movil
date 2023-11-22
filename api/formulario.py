@@ -16,7 +16,7 @@ def formulario():
 
 @ruta_Formulario.route('/saveFormulario', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     id_producto = request.json['id_producto']
     id_user = request.json['id_user']
     id_vehiculo = request.json['id_vehiculo']
@@ -60,8 +60,8 @@ def Update():
 @ruta_Formulario.route('/deleteFormulario/<id>', methods=['DELETE'])
 def eliminar(id):
     formulario = Formulario.query.get(id)
-    db.session.delete(Formulario_schema)
+    db.session.delete(formulario)
     db.session.commit()
     return jsonify(
-        Formulario_schema.dump(Formulario_schema),
+        Formulario_schema.dump(formulario),
                    )

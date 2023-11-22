@@ -8,6 +8,15 @@ from api.usuario import Usuario, ruta_Usuario
 from api.producto import Producto, ruta_Producto
 from api.formulario import Formulario, ruta_Formulario
 
+app.register_blueprint(ruta_Bodega,url_prefix = '/api')
+app.register_blueprint(ruta_Conductor,url_prefix = '/api')
+app.register_blueprint(ruta_Vehiculo, url_prefix = '/api')
+app.register_blueprint(ruta_Categoria, url_prefix = '/api')
+app.register_blueprint(ruta_Usuario, url_prefix = '/api')
+app.register_blueprint(ruta_Producto, url_prefix = '/api')
+app.register_blueprint(ruta_Formulario, url_prefix = '/api')
+
+
 @app.route('/')
 def index():
     return "Hola Mundo"

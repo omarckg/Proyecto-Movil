@@ -10,9 +10,9 @@ class Usuario(db.Model):
     nombre = db.Column(db.String(50), nullable=False)
     
 
-    def __init__(self, email, password, nombre):
+    def __init__(self, email, password_hash, nombre):
         self.email = email
-        self.set_password(password)
+        self.password_hash = password_hash
         self.nombre = nombre
         
         
@@ -22,4 +22,4 @@ with app.app_context():
 
 class UsuariosSchema(ma.Schema):
     class Meta:
-        fields = ('id','email', 'nombre')
+        fields = ('id','email','password_hash', 'nombre')

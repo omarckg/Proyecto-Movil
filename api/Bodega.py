@@ -16,7 +16,7 @@ def bodega():
 
 @ruta_Bodega.route('/saveBodega', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     nombre = request.json['nombre']
     new_bodega = Bodega(
         nombre,
@@ -48,8 +48,8 @@ def Update():
 @ruta_Bodega.route('/deleteBodega/<id>', methods=['DELETE'])
 def eliminar(id):
     bodega = Bodega.query.get(id)
-    db.session.delete(Bodega_schema)
+    db.session.delete(bodega)
     db.session.commit()
     return jsonify(
-        Bodega_schema.dump(Bodega),
+        Bodega_schema.dump(bodega),
                    )

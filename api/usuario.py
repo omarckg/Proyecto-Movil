@@ -16,7 +16,7 @@ def usuario():
 
 @ruta_Usuario.route('/saveUsuario', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     email = request.json['email']
     password_hash= request.json['password_hash']
     nombre = request.json['nombre']
@@ -55,8 +55,8 @@ def Update():
 @ruta_Usuario.route('/deleteUsuario/<id>', methods=['DELETE'])
 def eliminar(id):
     usuario = Usuario.query.get(id)
-    db.session.delete(Usuario_schema)
+    db.session.delete(usuario)
     db.session.commit()
     return jsonify(
-        Usuario_schema.dump(Usuario_schema),
+        Usuario_schema.dump( usuario),
                    )

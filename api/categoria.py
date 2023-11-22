@@ -9,14 +9,14 @@ Categoria_schema = CategoriasSchema()
 Categorias_schema = CategoriasSchema(many=True)
 
 @ruta_Categoria.route('/Categoria', methods=['GET'])
-def Categoria():
+def categoria():
     resultall = Categoria.query.all() # Select * from Pasajeros
     resultado_Categoria = Categorias_schema.dump(resultall)
     return jsonify(resultado_Categoria)
 
 @ruta_Categoria.route('/saveCategoria', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     id_bodega= request.json['id_bodega']
     nombre= request.json['nombre']
     new_categoria = Categoria(
@@ -53,8 +53,8 @@ def Update():
 @ruta_Categoria.route('/deleteCategoria/<id>', methods=['DELETE'])
 def eliminar(id):
     categoria = Categoria.query.get(id)
-    db.session.delete(Categoria_schema)
+    db.session.delete(categoria)
     db.session.commit()
     return jsonify(
-        Categoria_schema.dump(Categoria_schema),
+        Categoria_schema.dump(categoria),
                    )

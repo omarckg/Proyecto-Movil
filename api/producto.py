@@ -16,7 +16,7 @@ def producto():
 
 @ruta_Producto.route('/saveProducto', methods=['POST'])
 def save():
-    id = request.json['id']
+    #id = request.json['id']
     id_categoria= request.json['id_categoria']
     nombre = request.json['nombre']
     fecha_consumo = request.json['fecha_consumo']
@@ -61,8 +61,8 @@ def Update():
 @ruta_Producto.route('/deleteProducto/<id>', methods=['DELETE'])
 def eliminar(id):
     producto = Producto.query.get(id)
-    db.session.delete(Producto_schema)
+    db.session.delete(producto)
     db.session.commit()
     return jsonify(
-        Producto_schema.dump(Producto_schema),
+        Producto_schema.dump(producto),
                    )

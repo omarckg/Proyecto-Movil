@@ -5,7 +5,7 @@ class Vehiculo(db.Model):
 
     id  = db.Column(db.Integer, primary_key=True)
     id_conductor = db.Column(db.Integer, db.ForeignKey('Conductor.id'))
-    matricula = db.Column(db.String(6), unique=True)
+    matricula = db.Column(db.String(500), unique=True)
     
 
     def __init__(self, id_conductor,matricula ):

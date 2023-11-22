@@ -16,8 +16,8 @@ def vehiculo():
 
 @ruta_Vehiculo.route('/saveVehiculo', methods=['POST'])
 def save():
-    id = request.json['id']
-    id_conductor= request.json['id_conductor']
+    #id = request.json['id']
+    id_conductor = request.json['id_conductor']
     matricula = request.json['matricula']
     new_vehiculo = Vehiculo(
         id_conductor,
@@ -53,8 +53,8 @@ def Update():
 @ruta_Vehiculo.route('/deleteVehiculo/<id>', methods=['DELETE'])
 def eliminar(id):
     vehiculo = Vehiculo.query.get(id)
-    db.session.delete(Vehiculo_schema)
+    db.session.delete(vehiculo)
     db.session.commit()
     return jsonify(
-        Vehiculo_schema.dump(Vehiculo_schema),
+        Vehiculo_schema.dump(vehiculo),
                    )
